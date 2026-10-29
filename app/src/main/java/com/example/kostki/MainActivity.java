@@ -16,9 +16,9 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etLiczba;
+    EditText editTextLiczbaKostek;
     GridLayout gridKostki;
-    TextView tvWyniki;
+    TextView textViewWyniki;
     ArrayList<Integer> wyniki = new ArrayList<>();
     Random random = new Random();
 
@@ -27,23 +27,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etLiczba = findViewById(R.id.etLiczba);
+        editTextLiczbaKostek = findViewById(R.id.editTextLiczbaKostek);
         gridKostki = findViewById(R.id.gridKostki);
-        tvWyniki = findViewById(R.id.tvWyniki);
+        textViewWyniki = findViewById(R.id.textViewWyniki);
 
-        Button btnLosuj = findViewById(R.id.btnLosuj);
-        Button btnRosnaco = findViewById(R.id.btnRosnaco);
-        Button btnMalejaco = findViewById(R.id.btnMalejaco);
+        Button buttonLosuj = findViewById(R.id.buttonLosuj);
+        Button buttonRosnaco = findViewById(R.id.buttonRosnaco);
+        Button buttonMalejaco = findViewById(R.id.buttonMalejaco);
 
-        btnLosuj.setOnClickListener(v -> losuj());
-        btnRosnaco.setOnClickListener(v -> sortujRosnaco());
-        btnMalejaco.setOnClickListener(v -> sortujMalejaco());
+        buttonLosuj.setOnClickListener(v -> losuj());
+        buttonRosnaco.setOnClickListener(v -> sortujRosnaco());
+        buttonMalejaco.setOnClickListener(v -> sortujMalejaco());
     }
 
     void losuj() {
         int liczba;
         try {
-            liczba = Integer.parseInt(etLiczba.getText().toString());
+            liczba = Integer.parseInt(editTextLiczbaKostek.getText().toString());
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Wpisz poprawną liczbę", Toast.LENGTH_SHORT).show();
             return;
@@ -91,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
             kostka.setBackgroundResource(R.drawable.kostka);
 
             GridLayout.LayoutParams parametry = new GridLayout.LayoutParams();
-            parametry.width = 150;
-            parametry.height = 150;
-            parametry.setMargins(8, 8, 8, 8);
+            parametry.width = 120;
+            parametry.height = 120;
             kostka.setLayoutParams(parametry);
 
             gridKostki.addView(kostka);
@@ -104,6 +103,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        tvWyniki.setText(tekst);
+        textViewWyniki.setText(tekst);
     }
 }
